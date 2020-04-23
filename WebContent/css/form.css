@@ -1,0 +1,45 @@
+.login {
+    margin: 0 auto;
+    width: 400px;
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    box-sizing: border-box;
+}
+form div + div {
+    margin-top: 1em;
+}
+label {
+    display: inline-block;
+    text-align: right;
+}
+input, textarea {
+    font: 1em sans-serif;
+    width: 300px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #999;
+}
+input:focus, textarea:focus {
+    border-color: #000;
+}
+textarea {
+    vertical-align: top;
+    height: 5em;
+    resize: vertical;
+}
+.button {
+    padding-left: 90px;
+button {
+	outline: none !important;
+	border: none;
+        background-color: #018F2E;
+color: #FFF;
+ text-align: center;
+text-decoration: none;
+transition: 0.2s all;
+}
+
+button:hover {
+	cursor: pointer;
+}
