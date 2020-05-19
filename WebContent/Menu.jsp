@@ -13,10 +13,11 @@
 							<ul>
 								<!-- links para mudança de página (tela de login, favoritos e carrinho)-->
 								<li <%if(Usuario.isLogado() == false) %>><a href="./login.jsp"><i class="fa fa-user"></i>Login/Registrar</a></li>
-								<li <%if(Usuario.isLogado() == true && Usuario.isAdm() == false)%>><a href="./favoritos.jsp"><i class="fa fa-heart"></i>Favoritos<span></span></a></li>
+								<li <%if(Usuario.isLogado() == true && Usuario.isAdm() == false)%>><a href="FavoritosListar"><i class="fa fa-heart"></i>Favoritos<span></span></a></li>
 								<li <%if(Usuario.isLogado() == true && Usuario.isAdm() == false)%>><a href="#"><i class="fa fa-shopping-cart"></i>Carrinho</a></li>
 								<li <%if(Usuario.isLogado() == true && Usuario.isAdm() == false)%>><a href="#"><i class="fa fa-money"></i>Meus Produtos</a></li>
 								<li <%if(Usuario.isLogado() == true && Usuario.isAdm() == true )%>><a href="#"><i class="fa fa-users"></i>Usuarios</a></li>
+								<li <%if(Usuario.isLogado() == true && Usuario.isAdm() == true )%>><a href="#"><i class="fa fa-list"></i>Relatorio</a></li>
 								<li <%if(Usuario.isLogado() == true)  %>><a href="UsuarioLogar?acao=sair"><i class="fa fa-sign-out"></i>Sair</a></li>
 								<!-- /links para mudança de página (tela de login, favoritos e carrinho)-->
 							</ul>
@@ -70,8 +71,10 @@
 				<div class="col-md-10">
 					<div class="header-search">
 						<!-- barra de pesquisa e botão de busca -->
-						<input class="input" name="data[search]" placeholder="Busque aqui">
-						<a href="ProdutoListar?acao=buscar"><button class="search-btn" name="action" value="" >Buscar</button></a>
+						<form action="ProdutoListar" method="post">
+							<input class="input" name="data[search]" placeholder="Busque aqui">
+							<button class="search-btn" name="acao" value="buscar" >Buscar</button>
+						</form>
 						<!-- /barra de pesquisa e botão de busca -->
 					</div>
 				</div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="model.Usuario" %>
 
 <!DOCTYPE html>
 <html>
@@ -41,6 +42,7 @@
                 </div>
             </div>
         </section>
+       </form>
         <!--/SEÇÃO-->
 		<div class="section">
 			<!-- container -->
@@ -56,11 +58,11 @@
 						<div class="store-filter clearfix">
 							<div class="store-sort">
 								<label>
-									Filtrar por:
+									Ordenar por:
 									<select class="select" name="filtro" id="filtro">
-										<option value="${jFiltro }"> </option>
-										<option value="ProdutoListar?filtro=todos">Todos</option>
-										<option value="ProdutoListar?filtro=maisVendidos">Mais vendidos</option>
+										<option value=""> </option>
+										<option value="ProdutoListar?acao=buscar&filtro=todos">Todos</option>
+										<option value="ProdutoListar?acao=buscar&filtro=maisVendidos">Mais vendidos</option>
 									</select>
 									<script>
 										document.getElementById("filtro").onchange = function() {
@@ -91,7 +93,7 @@
 											<h3 class="product-name"><a href="./produto1.html">${produto.nome }</a></h3>
 											<h4 class="product-price">${produto.preco }</h4>
 											<div class="product-btns">
-												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">adicionar favoritos</span></button>
+												<a href="FavoritosAdicionar?idProduto=${produto.id }" class="add-to-wishlist" id="heart"><i class="fa fa-heart-o"></i></a>
 											</div>
 										</div>
 											<div class="add-to-cart">
@@ -124,7 +126,6 @@
 				</div>
 				<!-- /PAGINAÇÃO -->
 			</div>
-		</form>
 		<br><br>
 		<!-- RODAPE -->
 		<footer id="footer">

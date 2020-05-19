@@ -47,11 +47,10 @@ public class UsuarioLogar extends HttpServlet {
 				view = request.getRequestDispatcher("index.jsp");
 				view.forward(request, response);
 				session.setAttribute("usuario", usuario);
-				System.out.println(usuario.getId());
 			}
 			else {
 				session.removeAttribute("usuario");
-				view = request.getRequestDispatcher("index.jsp");
+				view = request.getRequestDispatcher("login.jsp");
 				view.forward(request, response);
 			}
 		}

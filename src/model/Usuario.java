@@ -6,7 +6,7 @@ public class Usuario {
 	private String cpf;
 	private String cep;
 	private String endereco;
-	private int numero;
+	private String complemento;
 	private String telefone;
 	private String email;
 	private String senha;
@@ -61,12 +61,12 @@ public class Usuario {
 		this.endereco = endereco;
 	}
 	
-	public int getNumero() {
-		return numero;
+	public String getComplemento() {
+		return complemento;
 	}
 	
-	public void setNumero(int nuemro) {
-		this.numero = nuemro;
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
 	}
 	
 	public String getTelefone() {

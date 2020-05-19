@@ -55,9 +55,7 @@ public class ProdutoDAO {
 		}
 	}
 
-	public Produto carregar(int id) {
-		Produto produto = new Produto();
-		produto.setId(id);
+	public Produto carregar(Produto produto) {
 		String sqlSelect = "SELECT * FROM produto WHERE ID = ?";
 		try (Connection conn = ConnectionFactory.obterConexao(); PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
 			stm.setInt(1, produto.getId());
@@ -169,7 +167,6 @@ public class ProdutoDAO {
 		ArrayList<Produto> list = new ArrayList<>();
 		String sqlSelect = "SELECT * FROM produto ORDER BY vendidos DESC";
 		try(Connection conn = ConnectionFactory.obterConexao(); PreparedStatement stm = conn.prepareStatement(sqlSelect)){
-			System.out.println("Passei maisVendidos");
 			try(ResultSet rs = stm.executeQuery()){
 				while(rs.next()) {
 					Produto produto = new Produto();

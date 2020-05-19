@@ -28,20 +28,35 @@ public class ProdutoListar extends HttpServlet {
 		String pChave = request.getParameter("data[search]");
 		String pFiltro = request.getParameter("filtro");
 		String pAcao = request.getParameter("acao");
-		pAcao = "buscar";
 		
 		ProdutoService pService = new ProdutoService();
 		ArrayList<Produto> lista = null;
 		HttpSession session = request.getSession();
 		
+		if(pFiltro != null && pFiltro.length() > 0) {
+			
+		}
+		else {
+			pFiltro = "todos";
+		}
+		
+		if(pAcao != null && pAcao.length() > 0) {
+			
+		}
+		else {
+			pAcao = "buscar";
+		}
+		
 		if (pAcao.equals("buscar")) {
 			if (pChave != null && pChave.length() > 0) {
 				lista = pService.listarProduto(pChave);
-			} else {
+			} 
+			
+			else {
 				if(pFiltro.equals("todos")) {
 					lista = pService.listarProduto();
-					session.setAttribute("jFiltro", pFiltro);
 				}
+				
 				else if(pFiltro.equals("maisVendidos")) {
 					lista = pService.maisVendidos();
 				}

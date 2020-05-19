@@ -44,8 +44,8 @@ public class Carrinho extends HttpServlet {
 		}
 		
 		if(pAcao.equals("adicionar")) {
-			Produto produto = pService.carregar(pIdProduto);
-			cService.addCarrinho(produto);
+			//Produto produto = pService.carregar(pIdProduto);
+			//cService.addCarrinho(produto);
 			System.out.println(cService.itensCarrinho().size());
 			session.removeAttribute("carrinho");
 			session.setAttribute("carrinho", cService.itensCarrinho());

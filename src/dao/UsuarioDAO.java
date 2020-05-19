@@ -9,20 +9,21 @@ import model.Usuario;
 
 public class UsuarioDAO {
 	public void adicionarUsuario(Usuario usuario) {
-		String sqlInsert = "INSERT INTO usuario(nome, cpf, cep, endereco, numero, telefone, email, senha, adm) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sqlInsert = "INSERT INTO usuario(nome, cpf, cep, endereco, complemento, telefone, email, senha, adm) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try(Connection conn = ConnectionFactory.obterConexao(); PreparedStatement stm = conn.prepareStatement(sqlInsert)){
 			stm.setString(1, usuario.getNome());
 			stm.setString(2, usuario.getCpf());
 			stm.setString(3, usuario.getCep());
 			stm.setString(4, usuario.getEndereco());
-			stm.setInt(5, usuario.getNumero());
+			stm.setString(5, usuario.getComplemento());
 			stm.setString(6, usuario.getTelefone());
 			stm.setString(7, usuario.getEmail());
 			stm.setString(8, usuario.getSenha());
 			stm.setBoolean(9, Usuario.isAdm());
 			stm.execute();
 			
+			ConnectionFactory.fecharConexao();
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -41,12 +42,16 @@ public class UsuarioDAO {
 					usuario.setCpf(rs.getString("CPF"));
 					usuario.setCep(rs.getString("cep"));
 					usuario.setEndereco(rs.getString("endereco"));
-					usuario.setNumero(rs.getInt("numero"));
+					usuario.setComplemento(rs.getString("complemento"));
 					usuario.setTelefone(rs.getString("telefone"));
 					usuario.setSenha(rs.getString("senha"));
 					Usuario.setAdm(rs.getBoolean("ADM"));
 				}
+			} catch(SQLException e) {
+				e.printStackTrace();
 			}
+			
+			ConnectionFactory.fecharConexao();
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}

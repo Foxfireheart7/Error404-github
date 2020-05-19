@@ -21,8 +21,8 @@ public class ProdutoService {
 		dao.excluir(id);
 	}
 	
-	public Produto carregar(int id){
-		return dao.carregar(id);
+	public Produto carregar(Produto produto){
+		return dao.carregar(produto);
 	}
 	
 	//--------------------------------//

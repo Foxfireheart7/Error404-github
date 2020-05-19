@@ -33,7 +33,7 @@ public class UsuarioCadastrar extends HttpServlet {
 		String pCpf = request.getParameter("cpf");
 		String pCep = request.getParameter("cep");
 		String pEndereco = request.getParameter("endereco");
-		int pNumero = Integer.parseInt(request.getParameter("complemento"));
+		String pComplemento = request.getParameter("complemento");
 		String pTelefone = request.getParameter("telefone");
 		String pEmail = request.getParameter("email");
 		String pSenha = request.getParameter("senha");
@@ -48,7 +48,7 @@ public class UsuarioCadastrar extends HttpServlet {
 		usuario.setCpf(pCpf);
 		usuario.setCep(pCep);
 		usuario.setEndereco(pEndereco);
-		usuario.setNumero(pNumero);
+		usuario.setComplemento(pComplemento);
 		usuario.setTelefone(pTelefone);
 		usuario.setEmail(pEmail);
 		usuario.setSenha(pSenha);
@@ -60,7 +60,8 @@ public class UsuarioCadastrar extends HttpServlet {
 			session.setAttribute("usuario", usuario);
 			usuario = (Usuario)session.getAttribute("usuario");
 			Usuario.setLogado(true);
-			view = request.getRequestDispatcher("login.jsp");
+			System.out.println(usuario.getId());
+			view = request.getRequestDispatcher("index.jsp");
 			view.forward(request, response);
 		}
 	}

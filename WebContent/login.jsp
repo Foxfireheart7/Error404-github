@@ -37,14 +37,22 @@
 		<div class="login-page">
   			<div class="form">
     			<form class="register-form" action="UsuarioCadastrar" method="post">
-      				<input type="text" placeholder="email" name="email"/>
-      				<input type="text" placeholder="nome" name="nome"/>
-      				<input type="text" placeholder="cpf" name="cpf"/>
-      				<input type="text" placeholder="cep" name="cep"/>
-      				<input type="text" placeholder="endereço" name="endereco"/>
-      				<input type="text" placeholder="complemento" name="complemento"/>
-      				<input type="text" placeholder="telefone" name="telefone"/>
-      				<input type="password" placeholder="senha" name="senha"/>
+    				<label for="email">E-mail</label>
+      				<input type="text" placeholder="email@domain.com" name="email" required/>
+      				<label for="nome">Nome</label>
+      				<input type="text" placeholder="nome completo" name="nome" required/>
+      				<label for="cpf">CPF</label>
+      				<input type="text" placeholder="cpf" name="cpf" required/>
+      				<label for="cep">CEP</label>
+      				<input type="text" placeholder="cep" name="cep" required/>
+      				<label for="endereco">Endereço</label>
+      				<input type="text" placeholder="Endereço e número" name="endereco" required/>
+      				<label for="complemento">Complemento</label>
+      				<input type="text" placeholder="ex(apto., bloco, etc)" name="complemento"/>
+      				<label for="telefone">Telefone</label>
+      				<input type="text" placeholder="DDD telefone" name="telefone" required/>
+      				<label for="senha">Senha</label>
+      				<input type="password" placeholder="senha" name="senha" required/>
       				
       				<!-- adicionar comando de registro para o usuário -->
       				<button name="acao" value="criar">Registrar</button>
@@ -54,7 +62,9 @@
     			<!-- Login -->
     			
     			<form class="login-form" action="UsuarioLogar" method="post">
+      				<label for="email">E-mail</label>
       				<input type="text" placeholder="email" name="email"/>
+      				<label for="senha">Senha</label>
       				<input type="password" placeholder="senha" name="senha"/>
       				
      				<!-- adicionar comando de login para o usuário -->
@@ -75,7 +85,7 @@
 								<h3 class="footer-title">Sobre Nós</h3>
 								<p>Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla</p>
 								<ul class="footer-links">
-									<li><a href="#"><i class="fa fa-map-marker"></i>Rua Erro Errado, 5615 - São Paulo, SP</a></li>
+									<li><a href="#"><i class="fa fa-map-marker"></i>Rua Erro Errado, 404 - São Paulo, SP</a></li>
 									<li><a href="#"><i class="fa fa-phone"></i>+55 (11) 9999-9999</a></li>
 									<li><a href="#"><i class="fa fa-envelope-o"></i>error404@store.com</a></li>
 								</ul>
