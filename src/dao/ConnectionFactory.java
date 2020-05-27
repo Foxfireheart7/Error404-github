@@ -17,7 +17,7 @@ private static final ThreadLocal<Connection> conn = new ThreadLocal<>();
 
 	public static Connection obterConexao() throws SQLException {
 		if (conn.get() == null){
-			conn.set(DriverManager.getConnection("jdbc:mysql://localhost:3306/Projeto?useTimezone=true&serverTimezone=UTC", "root", "gameover8218"));
+			conn.set(DriverManager.getConnection("jdbc:mysql://localhost:3306/Projeto?useSSL=false&useTimezone=true&serverTimezone=UTC", "root", "gameover8218"));
 		}
 		return conn.get();
 	}

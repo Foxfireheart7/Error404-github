@@ -58,8 +58,6 @@ public class PaginaInicial extends HttpServlet {
 			lista2.add(aux2.get(i));
 		}
 		
-		System.out.println(lista1.size());
-		System.out.println(lista2.size());
 		session.removeAttribute("seisProdutos");
 		session.removeAttribute("maisVendidos");
 		session.setAttribute("seisProdutos", lista1);

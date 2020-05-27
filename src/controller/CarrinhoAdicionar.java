@@ -1,7 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Produto;
-import model.Usuario;
+import service.CarrinhoService;
 import service.ProdutoService;
+import model.Produto;
 
-@WebServlet("/ProdutoCadastrar")
-public class ProdutoCadastrar extends HttpServlet {
+@WebServlet("/CarrinhoAdicionar")
+public class CarrinhoAdicionar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-    public ProdutoCadastrar() {
+    public CarrinhoAdicionar() {
         super();
     }
     
@@ -27,27 +27,26 @@ public class ProdutoCadastrar extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String pNome = request.getParameter("nome");
-		String pCategoria = request.getParameter("categoria");
-		String pDescricao = request.getParameter("descricao");
-		double pPreco = Double.parseDouble(request.getParameter("preco"));
-		int pVendidos = 0;
+		String pIdProduto = request.getParameter("idProduto");
+		String pUrl = request.getParameter("url");
 		
 		Produto produto = new Produto();
-		ProdutoService service = new ProdutoService();
+		ProdutoService pService = new ProdutoService();
+		CarrinhoService cService = new CarrinhoService();
 		HttpSession session = request.getSession();
-		Usuario usuario = (Usuario)session.getAttribute("usuario");
+		@SuppressWarnings("unchecked")
+		ArrayList<Produto> carrinho = (ArrayList<Produto>)session.getAttribute("carrinho");
 		
-		produto.setNome(pNome);
-		produto.setCategoria(pCategoria);
-		produto.setDescricao(pDescricao);
-		produto.setPreco(pPreco);
-		produto.setVendidos(pVendidos);
-		produto.setIdUsuario(usuario.getId());
-		//produto.setImagem(pImagem);
+		if(carrinho != null && !carrinho.isEmpty()) {
+			cService.setCarrinho(carrinho);
+		}
 		
-		service.criar(produto);
-		
-		response.sendRedirect("MeusProdutos");
+		produto.setId(Integer.parseInt(pIdProduto));
+		pService.carregar(produto);
+		cService.addCarrinho(produto);
+		session.removeAttribute("carrinho");
+		session.setAttribute("carrinho", cService.itensCarrinho());
+		response.sendRedirect(pUrl);
 	}
+
 }

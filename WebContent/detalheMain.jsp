@@ -60,19 +60,12 @@
                         </form>
                         <div class="p-d-cart">
                         	<div class="row">
-	                            <form action="CarrinhoAdicionar" method="post">
+	                            <form action="ProdutoAlterar" method="post">
 									<div class="col-md-2">
 										<!-- comando para adicionar ao carrinho -->
 										<input type="hidden" name="idProduto" value="${produtoDetalhado.id }">
-										<input type="hidden" name="url" value="shop.jsp">
-										<button class="butao"><i class="fa fa-shopping-cart"></i>Adicionar Carrinho</button>
-									</div>
-								</form>
-								<form action="FavoritosAdicionar" method="post">
-									<div class="col-md-2">
-										<input type="hidden" name="idProduto" value="${produtoDetalhado.id }">
-										<input type="hidden" name="url" value="shop.jsp">
-										<button class="butao"><i class="fa fa-heart-o"></i></button>
+										<input type="hidden" name="acao" value="detalhe">
+										<button class="butao"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar produto</button>
 									</div>
 								</form>
 							</div>

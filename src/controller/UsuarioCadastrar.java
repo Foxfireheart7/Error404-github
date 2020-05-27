@@ -39,6 +39,10 @@ public class UsuarioCadastrar extends HttpServlet {
 		String pSenha = request.getParameter("senha");
 		boolean pAdm = false;
 		
+		if(pComplemento == null) {
+			pComplemento = " ";
+		}
+		
 		Usuario usuario = new Usuario();
 		UsuarioService service = new UsuarioService();
 		RequestDispatcher view = null;
@@ -60,7 +64,6 @@ public class UsuarioCadastrar extends HttpServlet {
 			session.setAttribute("usuario", usuario);
 			usuario = (Usuario)session.getAttribute("usuario");
 			Usuario.setLogado(true);
-			System.out.println(usuario.getId());
 			view = request.getRequestDispatcher("index.jsp");
 			view.forward(request, response);
 		}

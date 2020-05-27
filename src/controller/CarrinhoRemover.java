@@ -1,7 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,15 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import service.FavoritosService;
 import model.Produto;
-import model.Usuario;
+import service.CarrinhoService;
 
-@WebServlet("/FavoritosAdicionar")
-public class FavoritosAdicionar extends HttpServlet {
+@WebServlet("/CarrinhoRemover")
+public class CarrinhoRemover extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-    public FavoritosAdicionar() {
+    public CarrinhoRemover() {
         super();
     }
     
@@ -27,23 +28,19 @@ public class FavoritosAdicionar extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		
 		String pIdProduto = request.getParameter("idProduto");
-		String pUrl = request.getParameter("url");
 		
-		FavoritosService fService = new FavoritosService();
-		Produto produto = new Produto();
-		Usuario usuario = new Usuario();
+		CarrinhoService cService = new CarrinhoService();
+		RequestDispatcher dispatcher = null;
 		HttpSession session = request.getSession();
+		@SuppressWarnings("unchecked")
+		ArrayList<Produto> carrinho = (ArrayList<Produto>)session.getAttribute("carrinho");
 		
-		usuario = (Usuario)session.getAttribute("usuario");
+		cService.setCarrinho(carrinho);
 		
-		if(usuario != null) {
-			produto.setId(Integer.parseInt(pIdProduto));
-			fService.adcionarFavoritos(usuario, produto);
-			
-			response.sendRedirect(pUrl);
-		}
+		cService.removeCarrinho(Integer.parseInt(pIdProduto));
+		dispatcher = request.getRequestDispatcher("CarrinhoListar");
+		dispatcher.forward(request, response);
 	}
+
 }

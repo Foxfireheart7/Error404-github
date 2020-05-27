@@ -29,6 +29,7 @@ public class CarrinhoService {
 		int index = -1;
 		
 		for(int i = 0; i < carrinho.size(); i++) {
+			
 			if(carrinho.get(i).getId() == id) {
 				return i;
 			}

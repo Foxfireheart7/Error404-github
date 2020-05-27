@@ -1038,3 +1038,123 @@ font-size: 16px;
   text-transform: uppercase;
   font-size: 12px;
 }
+
+.invisible{
+	opacity:0;
+	
+}
+.cart-coupn-leftside .continue-s, .cart-coupon-rightside .continue-s {
+    border: 1px solid #cccccc;
+    color: #303030;
+    display: inline-block;
+    font-size: 14px;
+    padding: 5px 8px;
+    text-transform: uppercase;
+    border-radius: 40px 40px 40px 40px;
+
+}
+.cart-coupn-leftside .continue-s:hover, .cart-coupon-rightside .continue-s:hover, .cart-coupn-leftside input.c-submit:hover {
+    background: #018B59;
+    color: #fff;
+    border: 1px solid #018B59;
+    text-decoration: none;
+}
+.cart-coupn-leftside > h4 {
+    color: #303030;
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 16px;
+    margin-top: 54px;
+    text-transform: uppercase;
+}
+.cart-coupn-leftside > p {
+    margin-bottom: 62px;
+    margin-top: 3px;
+}
+.cart-coupn-leftside > p span {
+    color: #303030;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+.r-c-btn {
+    display: block;
+    float: right;
+    overflow: hidden;
+    border-radius: 40px 40px 40px 40px;
+}
+.r-c-btn .continue-s {
+    margin-left: 28px;
+    border-radius: 40px 40px 40px 40px;
+}
+.continue-s:first-child {
+    margin-left: 0;
+}
+.cart-coupon-rightside .checkout {
+    background: #252525 none repeat scroll 0 0;
+    color: #fefefe;
+    float: left;
+    padding: 9px 20px;
+    text-transform: uppercase;
+    border-radius: 40px 40px 40px 40px;
+}
+.cart-coupon-rightside .checkout:hover {
+    background: #030424;
+    
+}
+
+.amount-table {
+    display: block;
+    float: right;
+    margin-bottom: 44px;
+    margin-top: 78px;
+    overflow: hidden;
+    text-align: right;
+    width: 100%;
+}
+.amount-table table {
+    background: #ffffff none repeat scroll 0 0;
+    width: 100%;
+}
+.amount-table table td {
+    border-top: medium none;
+    font-size: 14px;
+    padding: 5px 10px;
+    vertical-align: middle;
+}
+.amount-table table th {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 8px 0;
+    color: #303030;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.g-total td {
+    color: #018B59;
+    font-size: 18px !important;
+}
+.g-total > td span {
+	color: #018B59;
+}
+
+.butao{
+	border-radius: 40px 40px 40px 40px;
+}
+
+.butao:hover{
+	background: #3F3F3F;
+	color: #FEFEFE;
+	border-radius: 40px 40px 40px 40px;
+}
+
+.butao2{
+	border-radius: 40px 40px 40px 40px;
+}
+
+.butao2:hover{
+	background: #FC0105;
+	border-radius: 40px 40px 40px 40px;
+}
+
+.myDiv{
+	text-align: center
+}

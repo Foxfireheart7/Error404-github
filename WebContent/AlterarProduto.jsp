@@ -29,42 +29,39 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3">
-							<h2>Adicionar Produto</h2> 
+							<h2>Página de Edição</h2> 
 							<br>
-							<div class="edit-form">			
-								<form action="ProdutoCadastrar" method="post">
-									<h2>Adicionar</h2>
-									<p></p>	
-									<br>
-									 
+							<div class="edit-form">
+								<form action="ProdutoAlterar" method="post">
 									<div class="form-group">
-										<label for="email"> Nome do Produto:</label>
-										<input type="text" class="form-control" name="nome" required maxlength="50" placeholder="Coloque o nome do produto aqui">
+										<h2>Editar</h2>
 									</div>
 									<div class="form-group">
-										<label for="categoria"> Categoria:</label>
-										<input type="text" class="form-control" name="categoria" required maxlength="50" placeholder="Coloque o preço aqui">
+										<input type="hidden" name="idProduto" value="${produtoDetalhado.id }">
+										<label for="email"> Nome do Produto:</label>
+										<input type="text" class="form-control" name="nome" value="${produtoDetalhado.nome }" maxlength="50" placeholder="Coloque o nome do produto aqui" required>
 									</div>
 									<div class="form-group">
 										<label for="price"> Preço:</label>
-										<input type="text" class="form-control" name="preco" required maxlength="50" placeholder="Coloque o preço aqui">
+										<input type="text" class="form-control" name="preco" value="${produtoDetalhado.preco }" maxlength="50" placeholder="Coloque o preço aqui" required>
+									</div>
+									<div class="form-group">
+										<label for="category"> Categoria:</label>
+										<input type="text" class="form-control" name="categoria" value="${produtoDetalhado.categoria }" maxlength="50" placeholder="Categoria" required>
 									</div>
 									<div class="form-group">
 										<label for="descricao"> Descrição:</label>
-										<textarea class="form-control" name="descricao" placeholder="Coloque a descrição do produto aqui" maxlength="500" rows="7"></textarea>
+										<textarea class="form-control" name="descricao" placeholder="Descrição do produto" maxlength="500" rows="7" required>${produtoDetalhado.descricao }</textarea>
 									</div>
-									<div class="form-group">
-										<label for="name"> Imagem do Produto:</label>
-										<input type="file" class="form-control" id="image" name="image">
-									</div>
-									<button type="submit">Confirmar</button>
+									<!-- comando para atualizar ou remover o produto procurado -->
+									<button  type="submit" name="acao" value="salvar">Atualizar</button> 
 								</form>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<c:import url="MenuInf.jsp"/>		
+					
 		
 		<!-- jQuery Plugins -->
 		<script src="js/jquery.min.js"></script>

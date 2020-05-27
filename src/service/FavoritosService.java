@@ -13,8 +13,8 @@ public class FavoritosService {
 		dao.adicionarFavoritos(usuario, produto);
 	}
 	
-	public void removerFavoritos(Produto produto) {
-		dao.removerFavoritos(produto);
+	public void removerFavoritos(Usuario usuario, Produto produto) {
+		dao.removerFavoritos(usuario, produto);
 	}
 	
 	public ArrayList<Integer> carregarFavoritos(Usuario usuario){

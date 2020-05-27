@@ -44,6 +44,7 @@
 				</div>
 				<!-- /row -->
 			</div>
+			</form>
 			<!-- /container -->
 			<!-- /SEÇÃO -->
 			
@@ -78,17 +79,25 @@
 														</div>
 														<div class="product-body">
 															<p class="product-category">${produtos.categoria }</p>
-															<h3 class="product-name"><a href="#">${produtos.nome }</a></h3>
+															<h3 class="product-name"><a href="ProdutoDetalhar?idProduto=${produtos.id }&criadorProduto=0">${produtos.nome }</a></h3>
 															<h4 class="product-price">$${produtos.preco }</h4>
-															<div class="product-btns">
-																<!-- comando para adicionar aos favoritos -->
-																<button class="add-to-wishlist" name="action" value=""><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar aos Favoritos</span></button>
+															<form action="FavoritosAdicionar" method="post">
+																<div class="product-btns">
+																	<!-- comando para adicionar aos favoritos -->
+																	<input type="hidden" name="idProduto" value="${produtos.id }">
+																	<input type="hidden" name="url" value="index.jsp">
+																	<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar aos Favoritos</span></button>
+																</div>
+															</form>
+														</div>
+														<form action="CarrinhoAdicionar" method="post">
+															<div class="add-to-cart">
+																<!-- comando para adicionar ao carrinho -->
+																<input type="hidden" name="idProduto" value="${produtos.id }">
+																<input type="hidden" name="url" value="index.jsp">
+																<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Adicionar Carrinho</button>
 															</div>
-														</div>
-														<div class="add-to-cart">
-														<!-- comando para adicionar ao carrinho -->
-														<button class="add-to-cart-btn" name="action" value=""><i class="fa fa-shopping-cart"></i> Adicionar Carrinho</button>
-														</div>
+														</form>
 													</div>
 													<!-- /product -->        
 												</c:forEach>
@@ -166,17 +175,25 @@
 														</div>
 														<div class="product-body">
 															<p class="product-category">${mVendidos.categoria }</p>
-															<h3 class="product-name"><a href="#">${mVendidos.nome }</a></h3>
+															<h3 class="product-name"><a href="ProdutoDetalhar?idProduto=${mVendidos.id }&criadorProduto=0">${mVendidos.nome }</a></h3>
 															<h4 class="product-price">$${mVendidos.preco }</h4>
+															<form action="FavoritosAdicionar" method="post">
 															<div class="product-btns">
 																<!-- comando para adicionar aos favoritos -->
-																<button class="add-to-wishlist" name="action" value=""><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar aos Favoritos</span></button>
+																<input type="hidden" name="idProduto" value="${mVendidos.id }">
+																<input type="hidden" name="url" value="index.jsp">
+																<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar aos Favoritos</span></button>
 															</div>
+															</form>
 														</div>
-														<div class="add-to-cart">
-														<!-- comando para adicionar ao carrinho -->
-														<button class="add-to-cart-btn" name="action" value=""><i class="fa fa-shopping-cart"></i>Adicionar Carrinho</button>
-														</div>
+														<form action="CarrinhoAdicionar" method="post">
+															<div class="add-to-cart">
+																<!-- comando para adicionar ao carrinho -->
+																<input type="hidden" name="idProduto" value="${mVendidos.id }">
+																<input type="hidden" name="url" value="index.jsp">
+																<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Adicionar Carrinho</button>
+															</div>
+														</form>
 													</div>
 												</c:forEach>
 												<!-- /product -->
@@ -195,74 +212,16 @@
 				<!-- /container -->
 			</div>  
 			<!-- /SEÇÃO -->
-		</form>
+			
+			
 		
 		<br>
 		<br>
 		<br>
 		
 		<!-- RODAPE -->
-		<footer id="footer">
-			<div class="section">
-				<!-- container -->
-				<div class="container">
-					<!-- row -->
-					<div class="row">
-						<div class="col-md-3 col-xs-6">
-							<div class="footer">
-								<h3 class="footer-title">Sobre Nós</h3>
-								<p>Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla</p>
-								<ul class="footer-links">
-									<li><a href="#"><i class="fa fa-map-marker"></i>Rua Erro Errado, 5615 - São Paulo, SP</a></li>
-									<li><a href="#"><i class="fa fa-phone"></i>+55 (11) 9999-9999</a></li>
-									<li><a href="#"><i class="fa fa-envelope-o"></i>error404@store.com</a></li>
-								</ul>
-							</div>
-						</div>
-						
-						<div class="col-md-3 col-xs-6">
-							<div class="footer">
-								<h3 class="footer-title">Categorias</h3>
-								<ul class="footer-links">
-									<li><a href="./shop.jsp">Laptops</a></li>
-									<li><a href="./shop.jsp">Smartphones</a></li>
-									<li><a href="./shop.jsp">Câmeras</a></li>
-									<li><a href="./shop.jsp">Acessórios</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="clearfix visible-xs"></div>
-						<div class="col-md-3 col-xs-6">
-							<div class="footer">
-								<h3 class="footer-title">Informações</h3>
-								<ul class="footer-links">
-									<li><a href="#">Sobre Nós</a></li>
-									<li><a href="#">Nos Consulte</a></li>
-									<li><a href="#">Política de Privacidade</a></li>
-									<li><a href="#">Pedidos e Retornos</a></li>
-									<li><a href="#">Termos e Condicões</a></li>
-								</ul>
-							</div>
-						</div>
-						
-						<div class="col-md-3 col-xs-6">
-							<div class="footer">
-								<h3 class="footer-title">Serviço</h3>
-								<ul class="footer-links">
-									<li><a href="#">Minha Conta</a></li>
-									<li><a href="#">Meu Carrinho</a></li>
-									<li><a href="./favoritos.jsp">Favoritos</a></li>
-									<li><a href="#">Ajuda</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- /row -->
-				</div>
-				<!-- /container -->
-			</div>
-			<!-- /RODAPE -->
-		</footer>
+		
+		<c:import url="MenuInf.jsp"/>
 		
 		<!-- jQuery Plugins -->
 		<script src="js/jquery.min.js"></script>

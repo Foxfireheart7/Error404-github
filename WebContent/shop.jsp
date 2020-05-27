@@ -16,6 +16,7 @@
 		<link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
 		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+		<link type="text/css" rel="stylesheet" href="css/crud.css"/>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
@@ -90,31 +91,32 @@
 										</div>
 										<div class="product-body">
 											<p class="product-category">${produto.categoria }</p>
-											<h3 class="product-name"><a href="./produto1.html">${produto.nome }</a></h3>
+											<h3 class="product-name"><a href="ProdutoDetalhar?idProduto=${produto.id }&criadorProduto=0">${produto.nome }</a></h3>
 											<h4 class="product-price">${produto.preco }</h4>
-											<div class="product-btns">
-												<a href="FavoritosAdicionar?idProduto=${produto.id }" class="add-to-wishlist" id="heart"><i class="fa fa-heart-o"></i></a>
-											</div>
+											<form action="FavoritosAdicionar" method="post">
+												<div class="product-btns">
+													<!-- comando para adicionar aos favoritos -->
+													<!--<a href="FavoritosAdicionar?idProduto=${mVendidos.id }&url=index.jsp" class="add-to-wishlist" id="heart"><i class="fa fa-heart-o"></i></a>-->
+													<input type="hidden" name="idProduto" value="${produto.id }">
+													<input type="hidden" name="url" value="shop.jsp">
+													<button class="butao"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar aos Favoritos</span></button>
+												</div>
+											</form>
 										</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>adicionar carrinho</button>
-											</div>
+											<form action="CarrinhoAdicionar" method="post">
+												<div class="add-to-cart">
+													<!-- comando para adicionar ao carrinho -->
+													<input type="hidden" name="idProduto" value="${produto.id }">
+													<input type="hidden" name="url" value="shop.jsp">
+													<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Adicionar Carrinho</button>
+												</div>
+											</form>
 										</div>
 										<br><br><br>
 								</div>
 								</c:forEach>
-								
-								<div class="store-filter clearfix col-md-12">
-								<br><br><br><br>
-									<ul class="store-pagination">
-										<li class="active">1</li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-									</ul>
 								</div>
-								<!-- /store bottom filter -->
+								<div class="store-filter clearfix col-md-12">
 							</div>
 							<!-- /STORE -->
 						</c:if>
@@ -128,70 +130,8 @@
 			</div>
 		<br><br>
 		<!-- RODAPE -->
-		<footer id="footer">
-			<div class="section">
-				<!-- container -->
-				<div class="container">
-					<!-- row -->
-					<div class="row">
-						<div class="col-md-3 col-xs-6">
-							<div class="footer">
-								<h3 class="footer-title">Sobre Nós</h3>
-								<p>Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla</p>
-								<ul class="footer-links">
-									<li><a href="#"><i class="fa fa-map-marker"></i>Rua Erro Errado, 5615 - São Paulo, SP</a></li>
-									<li><a href="#"><i class="fa fa-phone"></i>+55 (11) 9999-9999</a></li>
-									<li><a href="#"><i class="fa fa-envelope-o"></i>error404@store.com</a></li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="col-md-3 col-xs-6">
-							<div class="footer">
-								<h3 class="footer-title">Categorias</h3>
-								<ul class="footer-links">
-									<li><a href="#">Laptops</a></li>
-									<li><a href="#">Smartphones</a></li>
-									<li><a href="#">Câmeras</a></li>
-									<li><a href="#">Acessórios</a></li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="clearfix visible-xs"></div>
-
-						<div class="col-md-3 col-xs-6">
-							<div class="footer">
-								<h3 class="footer-title">Informações</h3>
-								<ul class="footer-links">
-									<li><a href="#">Sobre Nós</a></li>
-									<li><a href="#">Nos Consulte</a></li>
-									<li><a href="#">Política de Privacidade</a></li>
-									<li><a href="#">Pedidos e Retornos</a></li>
-									<li><a href="#">Termos e Condicões</a></li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="col-md-3 col-xs-6">
-							<div class="footer">
-								<h3 class="footer-title">Serviço</h3>
-								<ul class="footer-links">
-									<li><a href="#">Minha Conta</a></li>
-									<li><a href="#">Meu Carrinho</a></li>
-									<li><a href="#">Favoritos</a></li>
-									<li><a href="#">Ajuda</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- /row -->
-				</div>
-				<!-- /container -->
-			</div>
-		<!-- /RODAPE -->
-		</footer>
-		<!-- /LOGIN E REGISTRO -->>
+		
+		<c:import url="MenuInf.jsp"/>
 
 		<!-- jQuery Plugins -->
 		<script src="js/jquery.min.js"></script>

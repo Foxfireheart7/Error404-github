@@ -10,14 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Produto;
-import model.Usuario;
 import service.ProdutoService;
 
-@WebServlet("/ProdutoCadastrar")
-public class ProdutoCadastrar extends HttpServlet {
+@WebServlet("/ProdutoAlterar")
+public class ProdutoAlterar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-    public ProdutoCadastrar() {
+    public ProdutoAlterar() {
         super();
     }
     
@@ -27,27 +26,33 @@ public class ProdutoCadastrar extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String pAcao = request.getParameter("acao");
+		String pIdProduto = request.getParameter("idProduto");
 		String pNome = request.getParameter("nome");
+		String pPreco = request.getParameter("preco");
 		String pCategoria = request.getParameter("categoria");
 		String pDescricao = request.getParameter("descricao");
-		double pPreco = Double.parseDouble(request.getParameter("preco"));
-		int pVendidos = 0;
 		
-		Produto produto = new Produto();
-		ProdutoService service = new ProdutoService();
 		HttpSession session = request.getSession();
-		Usuario usuario = (Usuario)session.getAttribute("usuario");
+		Produto produto = new Produto();
+		ProdutoService pService = new ProdutoService();
 		
-		produto.setNome(pNome);
-		produto.setCategoria(pCategoria);
-		produto.setDescricao(pDescricao);
-		produto.setPreco(pPreco);
-		produto.setVendidos(pVendidos);
-		produto.setIdUsuario(usuario.getId());
-		//produto.setImagem(pImagem);
+		produto.setId(Integer.parseInt(pIdProduto));
+		pService.carregar(produto);
 		
-		service.criar(produto);
-		
-		response.sendRedirect("MeusProdutos");
+		if(pAcao.equals("detalhe")) {
+			response.sendRedirect("AlterarProduto.jsp");
+		}
+		else if(pAcao.equals("salvar")){
+			produto.setNome(pNome);
+			produto.setPreco(Double.parseDouble(pPreco));
+			produto.setCategoria(pCategoria);
+			produto.setDescricao(pDescricao);
+			pService.atualizar(produto);
+			session.removeAttribute("produtoDetalhado");
+			session.setAttribute("produtoDetalhado", produto);
+			response.sendRedirect("detalheMain.jsp");
+		}
 	}
+
 }

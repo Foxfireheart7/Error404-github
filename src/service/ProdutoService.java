@@ -2,6 +2,7 @@ package service;
 
 import java.util.ArrayList;
 
+import model.Usuario;
 import model.Produto;
 import dao.ProdutoDAO;
 
@@ -25,6 +26,10 @@ public class ProdutoService {
 		return dao.carregar(produto);
 	}
 	
+	public Produto carregarNome(Produto produto) {
+		return dao.carregarNome(produto);
+	}
+	
 	//--------------------------------//
 	
 	public ArrayList<Produto> listarProduto(){
@@ -34,11 +39,11 @@ public class ProdutoService {
 		return dao.listarProduto(chave);
 	}
 	
-	public ArrayList<Produto> seisProdutos(){
-		return dao.seisProdutos();
-	}
-	
 	public ArrayList<Produto> maisVendidos(){
 		return dao.maisVendidos();
+	}
+	
+	public ArrayList<Produto> meusProdutos(Usuario usuario){
+		return dao.meusProdutos(usuario);
 	}
 }

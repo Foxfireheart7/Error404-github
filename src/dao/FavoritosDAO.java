@@ -11,7 +11,7 @@ import model.Produto;
 
 public class FavoritosDAO {
 	public void adicionarFavoritos(Usuario usuario, Produto produto) {
-		String sqlInsert = "INSERT INTO favoritos VALUES(?, ?)";
+		String sqlInsert = "INSERT INTO favoritos(ID_usuario, ID_produto) VALUES(?, ?)";
 		
 		try(Connection conn = ConnectionFactory.obterConexao(); PreparedStatement stm = conn.prepareStatement(sqlInsert)){
 			stm.setInt(1, usuario.getId());
@@ -24,10 +24,11 @@ public class FavoritosDAO {
 		}
 	}
 	
-	public void removerFavoritos(Produto produto) {
-		String sqlDelete = "DELETE FROM favoritos WHERE ID_produto = ?";
+	public void removerFavoritos(Usuario usuario, Produto produto) {
+		String sqlDelete = "DELETE FROM favoritos WHERE ID_usuario = ? and ID_produto = ?";
 		try(Connection conn = ConnectionFactory.obterConexao(); PreparedStatement stm = conn.prepareStatement(sqlDelete)){
-			stm.setInt(1, produto.getId());
+			stm.setInt(1, usuario.getId());
+			stm.setInt(2, produto.getId());
 			stm.execute();
 			
 			ConnectionFactory.fecharConexao();
