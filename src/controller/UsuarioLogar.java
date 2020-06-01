@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +34,6 @@ public class UsuarioLogar extends HttpServlet {
 		
 		Usuario usuario = new Usuario();
 		UsuarioService service = new UsuarioService();
-		RequestDispatcher view = null;
 		HttpSession session = request.getSession();
 		
 		usuario.setEmail(pEmail);
@@ -44,22 +42,22 @@ public class UsuarioLogar extends HttpServlet {
 		if(pAcao.equals("logar")) {
 			if(pSenha.equals(usuario.getSenha())) {
 				Usuario.setLogado(true);
-				view = request.getRequestDispatcher("index.jsp");
-				view.forward(request, response);
+				session.removeAttribute("usuario");
 				session.setAttribute("usuario", usuario);
+				response.sendRedirect("index.jsp");
 			}
 			else {
 				session.removeAttribute("usuario");
-				view = request.getRequestDispatcher("login.jsp");
-				view.forward(request, response);
+				response.sendRedirect("login.jsp");
 			}
 		}
 		
 		else if(pAcao.equals("sair")) {
 			Usuario.setLogado(false);
 			session.removeAttribute("usuario");
-			view = request.getRequestDispatcher("index.jsp");
-			view.forward(request, response);
+			session.removeAttribute("carrinhoAtual");
+			session.invalidate();
+			response.sendRedirect("index.jsp");
 		}
 	}
 }

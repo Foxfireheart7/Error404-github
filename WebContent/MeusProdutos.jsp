@@ -58,7 +58,7 @@
                                     <tbody>
                                     	<c:forEach var="mProdutos" items="${meusProdutos }">
 	                                        <tr>
-	                                            <td class="p-image"><a href="product-details.html"><img alt="" src="img/cart-3.jpg"></a></td>
+	                                            <td class="p-image"><a href="product-details.html"><img alt="" src="${mProdutos.path }" width="100" height="100"></a></td>
 	                                            <td class="p-name">
 	                                                <a href="ProdutoDetalhar?idProduto=${mProdutos.id }&criadorProduto=1">${mProdutos.nome }</a>
 	                                            </td>

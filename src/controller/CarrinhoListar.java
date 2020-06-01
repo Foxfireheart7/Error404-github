@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,27 +30,22 @@ public class CarrinhoListar extends HttpServlet {
 		
 		CarrinhoService cService = new CarrinhoService();
 		HttpSession session = request.getSession();
-		RequestDispatcher dispatcher = null;
 		@SuppressWarnings("unchecked")
 		ArrayList<Produto> carrinho = (ArrayList<Produto>)session.getAttribute("carrinho");
 		
 		cService.setCarrinho(carrinho);
 		
-		for(int i = 0; i < cService.itensCarrinho().size(); i++) {
-			precoTotal += cService.itensCarrinho().get(i).getPreco();
+		if(carrinho != null && !carrinho.isEmpty()) {
+			for(int i = 0; i < cService.itensCarrinho().size(); i++) {
+				precoTotal += cService.itensCarrinho().get(i).getPreco();
+			}
 		}
 		
 		session.removeAttribute("total");
 		session.removeAttribute("carrinhoAtual");
 		session.setAttribute("total", precoTotal);
 		session.setAttribute("carrinhoAtual", cService.itensCarrinho());
-		dispatcher = request.getRequestDispatcher("carrinho.jsp");
-		dispatcher.forward(request, response);
-		
-		
-		for(int i = 0; i < cService.itensCarrinho().size(); i++) {
-			System.out.println(cService.itensCarrinho().get(i));
-		}
+		response.sendRedirect("carrinho.jsp");
 	}
 
 }

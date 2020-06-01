@@ -7,9 +7,9 @@
 				<div class="col-md-3 col-xs-6">
 					<div class="footer">
 						<h3 class="footer-title">Sobre Nós</h3>
-						<p>Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla</p>
+						<p>Site de vendas criado para avaliação da diciplina de Projeto na universidade São Judas</p>
 						<ul class="footer-links">
-							<li><a href="#"><i class="fa fa-map-marker"></i>Rua Erro Errado, 5615 - São Paulo, SP</a></li>
+							<li><a href="#"><i class="fa fa-map-marker"></i>Rua Erro Errado, 404 - São Paulo, SP</a></li>
 							<li><a href="#"><i class="fa fa-phone"></i>+55 (11) 9999-9999</a></li>
 							<li><a href="#"><i class="fa fa-envelope-o"></i>error404@store.com</a></li>
 						</ul>

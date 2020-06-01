@@ -7,17 +7,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import model.Produto;
-import model.Usuario;
-import service.ProdutoService;
-
-@WebServlet("/ProdutoCadastrar")
-public class ProdutoCadastrar extends HttpServlet {
+@WebServlet("/Testando")
+public class Testando extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-    public ProdutoCadastrar() {
+    public Testando() {
         super();
     }
     
@@ -27,19 +22,10 @@ public class ProdutoCadastrar extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String pNome = request.getParameter("nome");
-		String pCategoria = request.getParameter("categoria");
-		String pDescricao = request.getParameter("descricao");
-		double pPreco = Double.parseDouble(request.getParameter("preco"));
 		String pPath = request.getParameter("path") + "\\";
 		String saida = "";
-		int pVendidos = 0, inicio = 0;
-		
-		Produto produto = new Produto();
-		ProdutoService service = new ProdutoService();
-		HttpSession session = request.getSession();
-		Usuario usuario = (Usuario)session.getAttribute("usuario");
 		ArrayList<String> array = new ArrayList<>();
+		int inicio = 0;
 		
 		for(int i = 0; i < pPath.length(); i++) {
 			char letra = pPath.charAt(i);
@@ -51,6 +37,8 @@ public class ProdutoCadastrar extends HttpServlet {
 			}
 		}
 		
+		
+		System.out.println("1 = " + pPath + "\n\n");
 		for(int i = 0; i < array.size(); i++) {
 			if(i == array.size() - 1) {
 				saida += array.get(i);
@@ -59,17 +47,8 @@ public class ProdutoCadastrar extends HttpServlet {
 				saida += array.get(i) + "/";
 			}
 		}
-		
-		produto.setNome(pNome);
-		produto.setCategoria(pCategoria);
-		produto.setDescricao(pDescricao);
-		produto.setPreco(pPreco);
-		produto.setVendidos(pVendidos);
-		produto.setIdUsuario(usuario.getId());
-		produto.setPath(saida);
-		
-		service.criar(produto);
-		
-		response.sendRedirect("MeusProdutos");
+		System.out.println("2 = " + saida);
+		response.sendRedirect("Test.jsp");
 	}
+
 }

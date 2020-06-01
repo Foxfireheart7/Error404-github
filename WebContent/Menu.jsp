@@ -17,8 +17,8 @@
 								<li <%if(Usuario.isLogado() == true && Usuario.isAdm() == false)%>><a href="CarrinhoListar"><i class="fa fa-shopping-cart"></i>Carrinho</a></li>
 								<li <%if(Usuario.isLogado() == true && Usuario.isAdm() == false)%>><a href="MeusProdutos"><i class="fa fa-money"></i>Meus Produtos</a></li>
 								<li <%if(Usuario.isLogado() == true && Usuario.isAdm() == false)%>><a href="crud.jsp"><i class="fa fa-plus"></i>Adicionar Produto</a></li>
-								<li <%if(Usuario.isLogado() == true && Usuario.isAdm() == true )%>><a href="#"><i class="fa fa-users"></i>Usuarios</a></li>
-								<li <%if(Usuario.isLogado() == true && Usuario.isAdm() == true )%>><a href="#"><i class="fa fa-list"></i>Relatorio</a></li>
+								<li <%if(Usuario.isLogado() == true && Usuario.isAdm() == true )%>><a href="UsuarioListar"><i class="fa fa-users"></i>Usuarios</a></li>
+								<li <%if(Usuario.isLogado() == true && Usuario.isAdm() == true )%>><a href="RelatorioVendas"><i class="fa fa-list"></i>Relatorio</a></li>
 								<li <%if(Usuario.isLogado() == true)  %>><a href="UsuarioLogar?acao=sair"><i class="fa fa-sign-out"></i>Sair</a></li>
 								<!-- /links para mudança de página (tela de login, favoritos e carrinho)-->
 							</ul>

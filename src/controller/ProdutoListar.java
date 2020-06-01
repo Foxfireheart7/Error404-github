@@ -3,7 +3,6 @@ package controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -65,7 +64,6 @@ public class ProdutoListar extends HttpServlet {
 			session.setAttribute("lista", lista);
 		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("shop.jsp");
-		dispatcher.forward(request, response);
+		response.sendRedirect("shop.jsp");
 	}
 }

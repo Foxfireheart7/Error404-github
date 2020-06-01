@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,7 +44,6 @@ public class UsuarioCadastrar extends HttpServlet {
 		
 		Usuario usuario = new Usuario();
 		UsuarioService service = new UsuarioService();
-		RequestDispatcher view = null;
 		HttpSession session = request.getSession();
 		
 		usuario.setNome(pNome);
@@ -64,8 +62,7 @@ public class UsuarioCadastrar extends HttpServlet {
 			session.setAttribute("usuario", usuario);
 			usuario = (Usuario)session.getAttribute("usuario");
 			Usuario.setLogado(true);
-			view = request.getRequestDispatcher("index.jsp");
-			view.forward(request, response);
+			response.sendRedirect("PaginaInicial");
 		}
 	}
 

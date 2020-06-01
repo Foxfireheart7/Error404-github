@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,8 +27,6 @@ public class PaginaInicial extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		
 		ProdutoService pService = new ProdutoService();
 		ArrayList<Produto> lista1 = new ArrayList<>();
 		ArrayList<Produto> lista2 = new ArrayList<>();
@@ -63,7 +60,6 @@ public class PaginaInicial extends HttpServlet {
 		session.setAttribute("seisProdutos", lista1);
 		session.setAttribute("maisVendidos", lista2);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-		dispatcher.forward(request, response);
+		response.sendRedirect("index.jsp");
 	}
 }

@@ -12,14 +12,15 @@ import model.Usuario;
 
 public class ProdutoDAO {
 	public void criar(Produto produto) {
-		String sqlInsert = "INSERT INTO produto(nome, categoria, descricao, preco, vendidos, fk_idUsuario) VALUES (?, ?, ?, ?, ?, ?)";
+		String sqlInsert = "INSERT INTO produto(nome, categoria, descricao, preco, vendidos, imagem, fk_idUsuario) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		try (Connection conn = ConnectionFactory.obterConexao(); PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
 			stm.setString(1, produto.getNome());
 			stm.setString(2, produto.getCategoria());
 			stm.setString(3, produto.getDescricao());
 			stm.setDouble(4, produto.getPreco());
 			stm.setInt(5, produto.getVendidos());
-			stm.setInt(6, produto.getIdUsuario());
+			stm.setString(6, produto.getPath());
+			stm.setInt(7, produto.getIdUsuario());
 			stm.execute();
 			
 			ConnectionFactory.fecharConexao();
@@ -68,6 +69,7 @@ public class ProdutoDAO {
 					produto.setPreco(rs.getDouble("preco"));
 					produto.setVendidos(rs.getInt("vendidos"));
 					produto.setIdUsuario(rs.getInt("fk_idUsuario"));
+					produto.setPath(rs.getString("imagem"));
 				}
 				
 			} catch (SQLException e) {
@@ -93,6 +95,7 @@ public class ProdutoDAO {
 					produto.setPreco(rs.getDouble("preco"));
 					produto.setVendidos(rs.getInt("vendidos"));
 					produto.setIdUsuario(rs.getInt("fk_idUsuario"));
+					produto.setPath(rs.getString("imagem"));
 				}
 				
 			} catch (SQLException e) {
@@ -121,6 +124,7 @@ public class ProdutoDAO {
 					produto.setPreco(rs.getDouble("preco"));
 					produto.setVendidos(rs.getInt("vendidos"));
 					produto.setIdUsuario(rs.getInt("fk_idUsuario"));
+					produto.setPath(rs.getString("imagem"));
 					lista.add(produto);
 				}
 			} catch (SQLException e) {
@@ -147,6 +151,7 @@ public class ProdutoDAO {
 					produto.setNome(rs.getString("nome"));
 					produto.setDescricao(rs.getString("descricao"));
 					produto.setPreco(rs.getDouble("preco"));
+					produto.setPath(rs.getString("imagem"));
 					lista.add(produto);
 				}	
 			} catch (SQLException e) {
@@ -172,6 +177,7 @@ public class ProdutoDAO {
 					produto.setCategoria(rs.getString("categoria"));
 					produto.setDescricao(rs.getString("descricao"));
 					produto.setPreco(rs.getDouble("preco"));
+					produto.setPath(rs.getString("imagem"));
 					list.add(produto);
 				}
 			} catch(SQLException e) {
@@ -199,6 +205,7 @@ public class ProdutoDAO {
 					produto.setDescricao(rs.getString("descricao"));
 					produto.setPreco(rs.getDouble("preco"));
 					produto.setVendidos(rs.getInt("vendidos"));
+					produto.setPath(rs.getString("imagem"));
 					list.add(produto);
 				}
 			} catch(SQLException e) {

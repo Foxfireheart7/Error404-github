@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.Usuario;
 
@@ -45,6 +46,7 @@ public class UsuarioDAO {
 					usuario.setComplemento(rs.getString("complemento"));
 					usuario.setTelefone(rs.getString("telefone"));
 					usuario.setSenha(rs.getString("senha"));
+					usuario.seteAdm(rs.getBoolean("ADM"));
 					Usuario.setAdm(rs.getBoolean("ADM"));
 				}
 			} catch(SQLException e) {
@@ -55,5 +57,35 @@ public class UsuarioDAO {
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public ArrayList<Usuario> listarUsuarios(){
+		ArrayList<Usuario> list = new ArrayList<>();
+		String sqlSelect = "SELECT * FROM usuario";
+		
+		try(Connection conn = ConnectionFactory.obterConexao(); PreparedStatement stm = conn.prepareStatement(sqlSelect); ResultSet rs = stm.executeQuery()){
+			while(rs.next()) {
+				Usuario usuario = new Usuario();
+				usuario.setId(rs.getInt("ID"));
+				usuario.setNome(rs.getString("nome"));
+				usuario.setCpf(rs.getString("CPF"));
+				usuario.setCep(rs.getString("cep"));
+				usuario.setEndereco(rs.getString("endereco"));
+				usuario.setComplemento(rs.getString("complemento"));
+				usuario.setTelefone(rs.getString("telefone"));
+				usuario.setEmail(rs.getString("email"));
+				usuario.setSenha(rs.getString("senha"));
+				usuario.seteAdm(rs.getBoolean("ADM"));
+				Usuario.setAdm(rs.getBoolean("ADM"));
+				list.add(usuario);
+				
+			}
+			
+			ConnectionFactory.fecharConexao();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 }

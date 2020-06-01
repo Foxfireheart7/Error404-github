@@ -57,7 +57,7 @@
                                     <tbody>
                                     <c:forEach var="carrinhoAgora" items="${carrinhoAtual }">
                                         <tr>
-                                            <td class="p-image"><a href="product-details.html"><img alt="" src="img/cart-3.jpg"></a></td>
+                                            <td class="p-image"><a href="product-details.html"><img alt="" src="${carrinhoAgora.path }" width="100" height="100"></a></td>
                                             <td class="p-name">
                                                 <a href="ProdutoDetalhar?idProduto=${carrinhoAgora.id }&criadorProduto=0">${carrinhoAgora.nome }</a>
                                             </td>
@@ -76,7 +76,7 @@
                         <div class="row">
                                 <div class="col-lg-7 col-md-7 col-sm-6">
                                     <div class="cart-coupn-leftside">
-                                        <a href="shop.jsp" class="continue-s">Continue Comprando</a>
+                                        <a href="ProdutoListar" class="continue-s">Continue Comprando</a>
                                     </div>
                                 </div>
                                 <div class="col-lg-5 col-md-5 col-sm-6">
@@ -113,7 +113,7 @@
             		<div class="myDiv">
             			<p><h3>Error <del>404 </del>, no products found here :(</h3>
             			<div class="cart-coupn-leftside">
-                       		<a href="shop.jsp" class="continue-s">Continue Comprando</a>
+                       		<a href="ProdutoListar" class="continue-s">Continue Comprando</a>
                     	</div>
             		</div>
             	</div>

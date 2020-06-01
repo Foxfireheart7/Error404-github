@@ -24,8 +24,8 @@
 		<!-- CABEÇALHO -->
 		<c:import url="Menu.jsp"/>
 		<!-- /CABEÇALHO-->
-		
-		<br><br><br>		
+
+	<br><br><br>		
 		
 		<!-- LOGIN E REGISTRO -->
         <div class="b-header-text">

@@ -1,6 +1,9 @@
 package service;
 
 import model.Usuario;
+
+import java.util.ArrayList;
+
 import dao.UsuarioDAO;
 
 public class UsuarioService {
@@ -13,17 +16,8 @@ public class UsuarioService {
 	public void logarUsuario(Usuario usuario) {
 		dao.logarUsuario(usuario);
 	}
+	
+	public ArrayList<Usuario> listarUsuarios(){
+		return dao.listarUsuarios();
+	}
 }
-/*
-ClienteDAO dao;
-
-public UsuarioService(){
-	dao = new ClienteDAO();
-}
-public ArrayList<Cliente> listarClientes(){
-	return dao.listarClientes();
-}
-public ArrayList<Cliente> listarClientes(String chave){
-	return dao.listarClientes(chave);
-}
-*/

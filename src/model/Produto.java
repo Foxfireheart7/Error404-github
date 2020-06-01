@@ -11,6 +11,7 @@ public class Produto implements Serializable {
 	private double preco;
 	private int vendidos;
 	private int idUsuario;
+	private String path;
 	
 	public int getId() {
 		return id;
@@ -66,6 +67,14 @@ public class Produto implements Serializable {
 
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 	@Override

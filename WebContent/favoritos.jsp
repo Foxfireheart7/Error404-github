@@ -62,7 +62,7 @@
 	                            <tbody>
 	                            <c:forEach var="favoritos" items="${favoritosListar }">
 	                                <tr>
-	                                    <td class="p-image"><a href="product-details.html"><img alt="" src="img/cart-3.jpg"></a></td>
+	                                    <td class="p-image"><a href="product-details.html"><img alt="" src="${favoritos.path }" width="100" height="100"></a></td>
 	                                    <td class="p-name">
 	                                        <a href="ProdutoDetalhar?idProduto=${favoritos.id }&criadorProduto=0">${favoritos.nome }</a>
 	                                    </td>

@@ -34,7 +34,7 @@
                             <div class="product-large">
                                 <div class="tab-content">
                                     <div class="tab-pane active in" id="img-1">
-                                        <a href="product-details.html"><img alt="" src="img/product/tab-l-1.jpg"></a>
+                                        <a href="product-details.html"><img alt="" src="${produtoDetalhado.path}" width="250" height="400"></a>
                                     </div>
                                     <div class="tab-pane" id="img-2">
                                         <a href="product-details.html"><img alt="" src="img/product/tab-l-2.jpg"></a>

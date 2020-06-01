@@ -10,6 +10,7 @@ public class Usuario {
 	private String telefone;
 	private String email;
 	private String senha;
+	private boolean eAdm;
 	private static boolean adm;
 	public static boolean logado = false;
 	
@@ -100,4 +101,14 @@ public class Usuario {
 	public static void setAdm(boolean adm) {
 		Usuario.adm = adm;
 	}
+
+	public boolean iseAdm() {
+		return eAdm;
+	}
+
+	public void seteAdm(boolean eAdm) {
+		this.eAdm = eAdm;
+	}
+	
+	
 }
